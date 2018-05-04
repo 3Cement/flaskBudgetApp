@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    {% for transaction in transactions %}
+    <div><p>{{ transaction.author.username }} 
+    	transaction: <b>{{ transaction.name }}, 
+    	price: {{ transaction.price }}</b></p></div>
+    {% endfor %}
+{% endblock %}

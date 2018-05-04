@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr valign="top">
+            <td>
+                <h1>User: {{ user.username }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}
+                <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    {% for transaction in transactions %}
+    <p>
+    {{ transaction.author.username }} 
+    transaction nr.<b>{{ transaction.id }}</b>
+    price: <b>{{ transaction.price }}</b>
+    name: <b>{{ transaction.name }}</b>
+    category: <b>{{ transaction.category }}</b>
+    sub_category: <b>{{ transaction.sub_category }}</b>
+    tag: <b>{{ transaction.tag }}</b>
+    date: <b>{{ transaction.timestamp }}</b>
+    </p>
+    {% endfor %}
+{% endblock %}
